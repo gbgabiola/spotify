@@ -36,4 +36,23 @@
   cursor: pointer;
 }
 
-/*ALL ELEMENT STYLING AND TRANSITION SHOULD BE INPUTTED HERE*/
+/* All element styling and transition shouldbe inputted here */
+
+#bgImage {
+  position: absolute;
+  width: 300px;
+  height: 250px;
+  transition: opacity .5s;
+}
+
+.bgImageClass {
+  opacity: 0;
+}
+
+/* .female {
+  opacity: 0;
+}
+
+.bgImageClass {
+  opacity: 0;
+}
