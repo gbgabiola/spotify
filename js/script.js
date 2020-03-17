@@ -11,6 +11,9 @@ const btn = document.querySelector('.btn');
 const logo = document.querySelector('.logo');
 const replay = document.querySelector('.replay');
 
+const frame1 = document.querySelector('.frame1');
+const frame2 = document.querySelector('.frame2');
+
 function preload() {
   // list images needed from the assets folder
   images = [
@@ -43,7 +46,6 @@ function iLoad() {
     btn.style.backgroundImage = `url('${images[5]}')`;
     logo.style.backgroundImage = `url('${images[6]}')`;
     replay.style.backgroundImage = `url('${images[7]}')`;
-    // setTimeout
 
     init();
     startAnim();
@@ -57,10 +59,53 @@ function init() {
 // image preload function should be called upon banner load.
 
 function startAnim() {
+  frame1.style.visibility = 'visible';
   bgImage.style.opacity = 1;
   female.style.opacity = 1;
   headline1.style.opacity = 1;
+  headline1.style.transform = 'translateX(0%)';
+
+  // Frame 1 animations
+  setTimeout(() => {
+    headline1.style.transition = 'transform 1s linear 0s';
+    female.style.transition = 'opacity 1s linear 0s';
+
+    setTimeout(() => {
+      headline1.style.opacity = 0;
+      startFrame2Animations();
+    }, 1000);
+
+    headline1.style.transform = 'translateX(-100%)';
+    female.style.opacity = 0;
+  }, 3000);
+}
+
+// Frame 2 animations
+function startFrame2Animations() {
+  frame1.style.visibility = 'hidden';
+  frame2.style.visibility = 'visible';
   headline2.style.opacity = 1;
+  subheadline.style.opacity = 1;
+  btn.style.opacity = 1;
+  logo.style.opacity = 1;
+  logo.style.transform = 'translateX(0%)';
+  replay.style.opacity = 1;
+  replay.addEventListener('click', replayEvent);
+}
+
+function replayEvent() {
+  // Reset first
+  frame1.style.visibility = 'hidden';
+  frame2.style.visibility = 'hidden';
+  headline2.style.opacity = 0;
+  subheadline.style.opacity = 0;
+  btn.style.opacity = 0;
+  logo.style.opacity = 0;
+  logo.style.transform = 'translateX(100%)';
+  replay.style.opacity = 0;
+
+  // Start animation again
+  startAnim();
 }
 
 preload();
